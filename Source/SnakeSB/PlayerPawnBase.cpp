@@ -66,24 +66,20 @@ void APlayerPawnBase::Move(const FInputActionValue& Value)
 	{
 
 		
-		if (Axis2DValue.X > 0)
+		if (Axis2DValue.X > 0 && SnakeActor->LastMovementDirection != EMovementDirection::RIGHT)
 		{
-			if (SnakeActor->LastMovementDirection == EMovementDirection::RIGHT) { return; }
 			SnakeActor->LastMovementDirection = EMovementDirection::LEFT;
-		}else if (Axis2DValue.X < 0)
+		}else if (Axis2DValue.X < 0 && SnakeActor->LastMovementDirection != EMovementDirection::LEFT)
 		{
-			if (SnakeActor->LastMovementDirection == EMovementDirection::LEFT) { return; }
 			SnakeActor->LastMovementDirection = EMovementDirection::RIGHT;
 		}
 
-		if (Axis2DValue.Y > 0)
+		if (Axis2DValue.Y > 0 && SnakeActor->LastMovementDirection != EMovementDirection::DOWN)
 		{
-			if (SnakeActor->LastMovementDirection == EMovementDirection::DOWN) { return; }
 			SnakeActor->LastMovementDirection = EMovementDirection::UP;
 		}
-		else if (Axis2DValue.Y < 0)
+		else if (Axis2DValue.Y < 0 && SnakeActor->LastMovementDirection != EMovementDirection::UP)
 		{
-			if (SnakeActor->LastMovementDirection == EMovementDirection::UP) { return; }
 			SnakeActor->LastMovementDirection = EMovementDirection::DOWN;
 		}
 
