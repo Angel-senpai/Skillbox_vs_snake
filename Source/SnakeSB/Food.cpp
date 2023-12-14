@@ -37,7 +37,11 @@ void AFood::Interact(AActor* Interactor, bool bIsHead)
 			
 			Snake->AddSnakeElement();
 
-			if (ChangeSpeed) { Snake->SetActorTickInterval(ChangeSpeedValue); }
+			if (ChangeSpeed)
+			{
+				Snake->MovementSpeed += ChangeSpeedValue;
+				Snake->SetActorTickInterval(Snake->MovementSpeed);
+			}
 			OnEaten.Broadcast();
 
 			Destroy();
